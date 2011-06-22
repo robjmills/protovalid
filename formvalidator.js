@@ -68,7 +68,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	* Overall Form Validation Routine
 	*/
     validateForm: function() {
@@ -78,7 +78,7 @@ var protoValid = Class.create({
         this);
     },
 
-	/**
+    /**
 	 * Validate Individual Elements
 	 */
     validateElement: function(el) {
@@ -93,7 +93,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Validates Optional Inputs
 	 * Checks first if elememt is empty, if not empty it validates against Regular Expression
 	*/
@@ -105,7 +105,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Validates Required Inputs
 	 * Checks required elements have values and then checks them against relavant Regular Expression
 	 */
@@ -117,7 +117,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Add element to array of objects that have been validated
 	 */
     validatedObjectsAdd: function(el) {
@@ -126,7 +126,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Remove element from array of objects that have been validated
 	 */
     validatedObjectsRemove: function(el) {
@@ -135,7 +135,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Validate input using a regular expression
 	 */
     validateRegexp: function(el) {
@@ -152,7 +152,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Validation of multiple items with at least one value required
 	*/
     validateCombo: function(el) {
@@ -181,7 +181,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Validation of items that must contain the same value
 	 */
     validateDuplicate: function(el) {
@@ -213,7 +213,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Pass element to additional validation routines
 	 */
     passValidation: function(el) {
@@ -227,7 +227,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Pass element(s) to the passed validation routine
 	 */
     passElementValidations: function(el) {
@@ -241,7 +241,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Pass element(s) to the failed validation routine
 	 */
     failElementValidations: function(el) {
@@ -255,7 +255,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Update class name on element to show whether validation has been passed or failed
 	 */
     styleValidationResult: function(el, newclass) {
@@ -275,7 +275,7 @@ var protoValid = Class.create({
         }
     },
 
-	/**
+    /**
 	 * Use overall failed validation to prevent form submission
 	 */
     failValidation: function(el) {
