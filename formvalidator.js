@@ -69,8 +69,8 @@ var protoValid = Class.create({
     },
 
     /**
-	* Overall Form Validation Routine
-	*/
+    * Overall Form Validation Routine
+    */
     validateForm: function() {
         this.internals.form.getElements().each(function(el) {
             this.validateElement(el);
@@ -79,8 +79,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validate Individual Elements
-	 */
+     * Validate Individual Elements
+     */
     validateElement: function(el) {
         if (el.className.include('required')) this.validateRequired(el);
         if (el.className.include('optional') || el.className.include('combo')) this.validateOptional(el);
@@ -94,9 +94,9 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validates Optional Inputs
-	 * Checks first if elememt is empty, if not empty it validates against Regular Expression
-	*/
+     * Validates Optional Inputs
+     * Checks first if elememt is empty, if not empty it validates against Regular Expression
+    */
     validateOptional: function(el) {
         if ($F(el).strip()) {
             this.validateRegexp(el);
@@ -106,9 +106,9 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validates Required Inputs
-	 * Checks required elements have values and then checks them against relavant Regular Expression
-	 */
+     * Validates Required Inputs
+     * Checks required elements have values and then checks them against relavant Regular Expression
+     */
     validateRequired: function(el) {
         if (el.type == 'checkbox') {
             (!el.checked) ? this.failValidation(el) : this.passValidation(el);
@@ -118,8 +118,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Add element to array of objects that have been validated
-	 */
+     * Add element to array of objects that have been validated
+     */
     validatedObjectsAdd: function(el) {
         if (this.internals.validated.indexOf(el.id) == -1) {
             this.internals.validated.push(el.id);
@@ -127,8 +127,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Remove element from array of objects that have been validated
-	 */
+     * Remove element from array of objects that have been validated
+     */
     validatedObjectsRemove: function(el) {
         if (this.internals.validated.indexOf(el.id) != -1) {
             this.internals.validated.splice(this.internals.validated.indexOf(el.id), 1);
@@ -136,8 +136,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validate input using a regular expression
-	 */
+     * Validate input using a regular expression
+     */
     validateRegexp: function(el) {
         for (var regex in (this.options.regexes)) {
             if (el.hasClassName(regex)) {
@@ -153,8 +153,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validation of multiple items with at least one value required
-	*/
+     * Validation of multiple items with at least one value required
+    */
     validateCombo: function(el) {
         el.className.match(/(?:^|\s+)combi-(\d+)(?:\s|$)/);
         var ocid = RegExp.$1;
@@ -182,8 +182,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Validation of items that must contain the same value
-	 */
+     * Validation of items that must contain the same value
+     */
     validateDuplicate: function(el) {
         el.className.match(/(?:^|\s+)dupe-(\d+)(?:\s|$)/);
         var val = RegExp.$1;
@@ -214,8 +214,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Pass element to additional validation routines
-	 */
+     * Pass element to additional validation routines
+     */
     passValidation: function(el) {
         this.validatedObjectsAdd(el);
         if (el.className.include('duplicate')) {
@@ -228,8 +228,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Pass element(s) to the passed validation routine
-	 */
+     * Pass element(s) to the passed validation routine
+     */
     passElementValidations: function(el) {
         if (Object.isArray(el)) {
             el.each(function(e) {
@@ -242,8 +242,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Pass element(s) to the failed validation routine
-	 */
+     * Pass element(s) to the failed validation routine
+     */
     failElementValidations: function(el) {
         if (Object.isArray(el)) {
             el.each(function(e) {
@@ -256,8 +256,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Update class name on element to show whether validation has been passed or failed
-	 */
+     * Update class name on element to show whether validation has been passed or failed
+     */
     styleValidationResult: function(el, newclass) {
         var testclass = (newclass == this.options.valid) ? this.options.notValid: this.options.valid;
         if (!$(el).hasClassName(newclass)) {
@@ -276,8 +276,8 @@ var protoValid = Class.create({
     },
 
     /**
-	 * Use overall failed validation to prevent form submission
-	 */
+     * Use overall failed validation to prevent form submission
+     */
     failValidation: function(el) {
         if (this.internals.event) Event.stop(this.internals.event);
         this.validatedObjectsRemove(el);
